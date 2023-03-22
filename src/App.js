@@ -8,12 +8,12 @@ import {useState, useEffect} from 'react';
 //importación de vistas 
 import Home from './views/Home';
 import Login from './views/Login';
-import Registro from './views/Registro';
-import Perfil from './views/Perfil';
-import Formulario from './views/Formulario';
+import Registro from './views/RegistroUsuario';
+import Perfil from './views/MiPerfil';
+import Formulario from './views/FormProducts';
 import Galeria from './views/Galeria';
 import InfoProducto from './views/InfoProducto';
-import Favoritos from './views/Favoritos';
+import Favoritos from './views/MisFavoritos';
 import EnVenta from './views/EnVenta';
 import NotFound from './views/NotFound';
 
