@@ -5,7 +5,7 @@ import Card from 'react-bootstrap/Card';
 import ListGroup from "react-bootstrap/ListGroup";
 
 
-const Cards = ({id, img, name, desc, category, price}) => {
+const Cards = ({img, name, desc, category, price}) => {
  
  
   return (

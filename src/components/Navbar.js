@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { Link } from "react-router-dom";
+
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
@@ -12,7 +14,9 @@ const BarraNavegacion = () => {
   return (
     <Navbar bg="light" expand="lg">
       <Container fluid>
+        <Link to="/" className="text-white ms-3 text-decoration-none">
         <Navbar.Brand href="#">CONECTADOS</Navbar.Brand>
+        </Link>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
           <Nav

@@ -22,14 +22,28 @@ import BarraNavegacion from './components/Navbar';
 
 
 function App() {
+
+  const TrueEstado = () => {
+    const valorTrue = true;
+    setChangeState(valorTrue)
+  };
+
+  const FalseEstado = () => {
+    const valorFalse = false;
+    setChangeState(valorFalse)
+  };
+
   const [ products, setProducts ] = useState([]);
   const [ priceFilter, setPriceFilter ] = useState([]);
+  const [ changeState, setChangeState ] = useState("");
   const [ minPrice, setMinPrice ] = useState (0);
   const [ maxPrice, setMaxPrice ] = useState (0);
   const globalState = { products, setProducts,
                         priceFilter, setPriceFilter,
+                        changeState, setChangeState,
                         minPrice, setMinPrice,
-                        maxPrice, setMaxPrice };
+                        maxPrice, setMaxPrice,
+                        TrueEstado, FalseEstado};
 
   //Consumo de Json
   const endpoint = "/examples.json";
@@ -58,7 +72,7 @@ function App() {
               < Route path="/perfil" element={< Perfil />} />
               < Route path="/formulario" element={< Formulario />} />
               < Route path="/galeria" element={< Galeria />} />
-              < Route path="/infoproducto" element={< InfoProducto />} />
+              < Route path="/infoproducto/:id" element={< InfoProducto />} />
               < Route path="/favoritos" element={< Favoritos />} />
               < Route path="/enventa" element={< EnVenta />} />
               < Route path="*" element={< NotFound />}/>

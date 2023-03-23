@@ -1,16 +1,28 @@
 import React from "react";
-import MyContext from "../MyContext";
 import { useContext } from "react";
+import MyContext from "../MyContext";
+
 
 
 const Sidebar = () => {
-  const { products, setPriceFilter,minPrice, setMinPrice, maxPrice, setMaxPrice} = useContext(MyContext);
+  const { products, setPriceFilter, minPrice, setMinPrice,
+          maxPrice, setMaxPrice, TrueEstado, FalseEstado} = useContext(MyContext);
+
+          console.log(minPrice)
+          console.log(maxPrice)
 
   const handleSearch = () => {
     const cardsGalery = products.filter(
-      product => product.price >= minPrice && product.price <= maxPrice
-    );
-    setPriceFilter(cardsGalery)
+    product => product.price >= minPrice && product.price <= maxPrice
+  );
+  setPriceFilter(cardsGalery)
+
+  if( minPrice === 0 || maxPrice === 0) {
+    TrueEstado()
+  }
+  if( minPrice !== 0 || maxPrice !== 0) {
+    FalseEstado()
+  } 
   };
 
   return (
@@ -22,7 +34,7 @@ const Sidebar = () => {
           id="min-price"
           type="number"
           value={minPrice}
-          onChange={(e) => setMinPrice(e.target.value)}/>
+          onChange={(e) => setMinPrice(e.target.value || 0) }/>
       </div>
       <div>
         <label htmlFor="max-price">hasta:</label>
@@ -30,9 +42,9 @@ const Sidebar = () => {
           id="max-price"
           type="number"
           value={maxPrice}
-          onChange={(e) => setMaxPrice(e.target.value)}/>
-      </div> 
-      <button onClick={() => handleSearch()}> Buscar </button>    
+          onChange={(e) => setMaxPrice(e.target.value || 0)}/>
+      </div>
+      <button onClick={() => handleSearch()}>BUSCAR</button>    
     </div>
   );
 }
