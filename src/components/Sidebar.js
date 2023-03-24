@@ -27,9 +27,10 @@ const Sidebar = () => {
 
   return (
     <div className="price-range">
-      <h1>Precio</h1>
+      <h6>Precio</h6>
       <div>
-        <label htmlFor="min-price">desde:</label>
+        <label htmlFor="min-price">Desde</label>
+        <br/>
         <input
           id="min-price"
           type="number"
@@ -37,13 +38,25 @@ const Sidebar = () => {
           onChange={(e) => setMinPrice(e.target.value || 0) }/>
       </div>
       <div>
-        <label htmlFor="max-price">hasta:</label>
+        <label htmlFor="max-price">Hasta </label>
+        <br/>
         <input
           id="max-price"
           type="number"
           value={maxPrice}
           onChange={(e) => setMaxPrice(e.target.value || 0)}/>
       </div>
+      <div>
+        <h6>Categoría</h6>
+        <select placholder= "Selecciona">
+          <option>Hogar</option>
+          <option>Mascotas</option>
+          <option>Servicios</option>
+          <option>Tecnología</option>
+          <option>Vestuario</option>
+        </select>
+      </div>
+      <br/>     
       <button onClick={() => handleSearch()}>BUSCAR</button>    
     </div>
   );
