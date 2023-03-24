@@ -1,9 +1,12 @@
-import React from "react";
-import { useContext } from "react";
-// import Logo from "../assets/img/back2.png";
+import React, { useContext } from "react";
+
+import MyContext from "../MyContext";
+
 import { Link, useNavigate} from "react-router-dom";
 import { Button } from "react-bootstrap";
-import MyContext from "../MyContext";
+
+// import Logo from "../assets/img/back2.png";
+
 
 const Home = () => {
  const { TrueEstado } = useContext(MyContext);

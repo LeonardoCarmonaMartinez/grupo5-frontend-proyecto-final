@@ -1,8 +1,8 @@
-import React from 'react';
-import { useContext } from "react";
-//import { useParams } from 'react-router-dom';
+import React, { useContext }from 'react';
+
 import MyContext from "../MyContext";
 
+//Importación de componentes
 import Sidebar from '../components/Sidebar';
 import Cards from '../components/Cards';
 
@@ -10,8 +10,6 @@ import Cards from '../components/Cards';
 
 const Galeria = () => {
   const { products,  priceFilter, changeState} = useContext(MyContext);
-
-  console.log(changeState)
 
   if(changeState === true) {
     return (    

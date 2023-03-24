@@ -1,7 +1,6 @@
-import React from "react";
-import { useContext } from "react";
-import MyContext from "../MyContext";
+import React, { useContext } from "react";
 
+import MyContext from "../MyContext";
 
 
 const Sidebar = () => {

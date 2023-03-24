@@ -13,7 +13,6 @@ import Perfil from './views/MiPerfil';
 import Formulario from './views/FormProducts';
 import Galeria from './views/Galeria';
 import InfoProducto from './views/InfoProducto';
-import Favoritos from './views/MisFavoritos';
 import EnVenta from './views/EnVenta';
 import NotFound from './views/NotFound';
 
@@ -38,11 +37,14 @@ function App() {
   const [ changeState, setChangeState ] = useState("");
   const [ minPrice, setMinPrice ] = useState (0);
   const [ maxPrice, setMaxPrice ] = useState (0);
+  const [ exito, setExito ] = useState(false);
+
   const globalState = { products, setProducts,
                         priceFilter, setPriceFilter,
                         changeState, setChangeState,
                         minPrice, setMinPrice,
                         maxPrice, setMaxPrice,
+                        exito, setExito,
                         TrueEstado, FalseEstado};
 
   //Consumo de Json
@@ -73,7 +75,6 @@ function App() {
               < Route path="/formulario" element={< Formulario />} />
               < Route path="/galeria" element={< Galeria />} />
               < Route path="/infoproducto/:id" element={< InfoProducto />} />
-              < Route path="/favoritos" element={< Favoritos />} />
               < Route path="/enventa" element={< EnVenta />} />
               < Route path="*" element={< NotFound />}/>
             </ Routes >    

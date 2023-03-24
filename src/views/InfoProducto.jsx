@@ -1,8 +1,12 @@
-import React from "react";
-import { useContext } from "react";
-import { useParams } from "react-router-dom";
-import { Container, Row, Col } from "react-bootstrap";
+import React, { useContext }  from "react";
+
 import MyContext from "../MyContext";
+
+import { useParams } from "react-router-dom";
+
+import { Container, Row, Col } from "react-bootstrap";
+
+
 
 const InfoProducto = () => {
   const { products } = useContext(MyContext);
