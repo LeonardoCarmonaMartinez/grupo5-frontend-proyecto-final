@@ -10,13 +10,13 @@ import { Container, Row, Col } from "react-bootstrap";
 
 const InfoProducto = () => {
   const { products } = useContext(MyContext);
-  const { id } = useParams();
+  const { id_producto } = useParams();
   
   return (
     <main>
-      {products.filter(product => product.id === id)
-      .map(info =>
-      <div className="contenedor m-5" >
+      {products.filter(product => product.id_producto === id_producto)
+               .map(info =>
+      <div className="contenedor m-5" key={info.id_producto} >
         <Container>
           <h3>{info.name}</h3>
           <Row>
@@ -32,8 +32,8 @@ const InfoProducto = () => {
             </Col>
           </Row>
         </Container>
-      </div>)}
-      
+      </div>
+      )}
     </main>
   );
 };

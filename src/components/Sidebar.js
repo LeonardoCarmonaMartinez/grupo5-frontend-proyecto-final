@@ -4,11 +4,21 @@ import MyContext from "../MyContext";
 
 
 const Sidebar = () => {
-  const { products, setPriceFilter, minPrice, setMinPrice,
-          maxPrice, setMaxPrice, TrueEstado, FalseEstado} = useContext(MyContext);
+  const { setChangeState, products, setPriceFilter, minPrice, setMinPrice, maxPrice, setMaxPrice } = useContext(MyContext);
 
-          console.log(minPrice)
-          console.log(maxPrice)
+  
+  const TrueEstado = () => {
+    const valorTrue = true;
+    setChangeState(valorTrue)
+  };
+  
+
+  const FalseEstado = () => {
+    const valorFalse = false;
+    setChangeState(valorFalse)
+  };
+  
+  
 
   const handleSearch = () => {
     const cardsGalery = products.filter(
@@ -19,9 +29,15 @@ const Sidebar = () => {
   if( minPrice === 0 || maxPrice === 0) {
     TrueEstado()
   }
-  if( minPrice !== 0 || maxPrice !== 0) {
+  if( minPrice !== 0 && maxPrice === 0) {
     FalseEstado()
-  } 
+  }
+  if( minPrice === 0 && maxPrice !== 0) {
+    FalseEstado()
+  }
+  if( minPrice !== 0 && maxPrice !== 0) {
+    FalseEstado()
+  }
   };
 
   return (
@@ -45,17 +61,6 @@ const Sidebar = () => {
           value={maxPrice}
           onChange={(e) => setMaxPrice(e.target.value || 0)}/>
       </div>
-      <div>
-        <h6>Categoría</h6>
-        <select placholder= "Selecciona">
-          <option>Hogar</option>
-          <option>Mascotas</option>
-          <option>Servicios</option>
-          <option>Tecnología</option>
-          <option>Vestuario</option>
-        </select>
-      </div>
-      <br/>     
       <button onClick={() => handleSearch()}>BUSCAR</button>    
     </div>
   );

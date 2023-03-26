@@ -10,15 +10,17 @@ import Cards from '../components/Cards';
 
 const Galeria = () => {
   const { products,  priceFilter, changeState} = useContext(MyContext);
-
+  console.log(changeState)
+  
   if(changeState === true) {
     return (    
       <div>
          <aside>
+            <p>Ingresar un precio mínimo y uno máximo</p>
             < Sidebar />
           </aside>    
         {products.map(product =>
-         <main>
+         <main>          
             < Cards 
               key = {product.id}
               img = {product.img} 

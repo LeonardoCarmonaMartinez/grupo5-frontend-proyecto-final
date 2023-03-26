@@ -13,7 +13,6 @@ import Perfil from './views/MiPerfil';
 import Formulario from './views/FormProducts';
 import Galeria from './views/Galeria';
 import InfoProducto from './views/InfoProducto';
-import EnVenta from './views/EnVenta';
 import NotFound from './views/NotFound';
 
 //importación de componentes
@@ -22,33 +21,25 @@ import BarraNavegacion from './components/Navbar';
 
 function App() {
 
-  const TrueEstado = () => {
-    const valorTrue = true;
-    setChangeState(valorTrue)
-  };
-
-  const FalseEstado = () => {
-    const valorFalse = false;
-    setChangeState(valorFalse)
-  };
-
+  const [ changeState, setChangeState ] = useState(true);
   const [ products, setProducts ] = useState([]);
+  const [ users, setUsers ] = useState([]);
   const [ priceFilter, setPriceFilter ] = useState([]);
-  const [ changeState, setChangeState ] = useState("");
   const [ minPrice, setMinPrice ] = useState (0);
   const [ maxPrice, setMaxPrice ] = useState (0);
   const [ exito, setExito ] = useState(false);
-
-  const globalState = { products, setProducts,
+  
+  const globalState = { changeState, setChangeState,
+                        products, setProducts,
+                        users, setUsers,
                         priceFilter, setPriceFilter,
-                        changeState, setChangeState,
                         minPrice, setMinPrice,
                         maxPrice, setMaxPrice,
-                        exito, setExito,
-                        TrueEstado, FalseEstado};
+                        exito, setExito };
 
   //Consumo de Json
-  const endpoint = "/examples.json";
+  const endpoint = "/examplesProductos.json";
+  const endpoint2 = "/examplesUsuarios.json";
 
   const getProduct = async () => {
     const res = await fetch (endpoint);
@@ -61,6 +52,17 @@ function App() {
     getProduct()
   }, []);
 
+  const getUsers = async () => {
+    const res = await fetch (endpoint2);
+    const infoUsers = await res.json();
+    
+    setUsers(infoUsers)
+  };
+
+  useEffect(() => {
+    getUsers()
+  }, []);
+
    
   return (
     <div className="App">
@@ -71,11 +73,10 @@ function App() {
               < Route path="/" element={< Home />} />
               < Route path="/login" element={< Login />} />
               < Route path="/registro" element={< Registro />} />
-              < Route path="/perfil" element={< Perfil />} />
+              < Route path="/perfil/:id_us" element={< Perfil />} />
               < Route path="/formulario" element={< Formulario />} />
               < Route path="/galeria" element={< Galeria />} />
-              < Route path="/infoproducto/:id" element={< InfoProducto />} />
-              < Route path="/enventa" element={< EnVenta />} />
+              < Route path="/infoproducto/:id_producto" element={< InfoProducto />} />
               < Route path="*" element={< NotFound />}/>
             </ Routes >    
         </ BrowserRouter >
