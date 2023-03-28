@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
-import { Link } from "react-router-dom";
+import MyContext from "../MyContext";
+
+import { Link, useNavigate } from "react-router-dom";
 
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
@@ -10,12 +12,34 @@ import Navbar from 'react-bootstrap/Navbar';
 
 
 const BarraNavegacion = () => {
-  
+  const { products, searchConcept, setSearchConcept, setHandlerSearching, setChangeState} = useContext(MyContext);
+  const navigate = useNavigate();
+
+  const otroEstado = () => {
+    const valueFalse = false;
+    setChangeState(valueFalse)
+
+  }; 
+
+  const handlerClick = () => {
+    if(searchConcept !== "") {
+     navigate(`/galeria`)
+    }
+    const handler = products.filter((prod) => {
+      return (prod.name.toLowerCase().includes(searchConcept))
+    })
+    setHandlerSearching(handler)
+    
+    otroEstado();    
+  };
+
+
+
   return (
     <Navbar bg="light" expand="lg">
       <Container>
         <Link to="/" className="text-white ms-3 text-decoration-none">
-          <Navbar.Brand href="#">CONECTADOS</Navbar.Brand>
+          <Navbar.Brand href="#">CONECTA-DOS</Navbar.Brand>
         </Link>
         <Nav
           className="me-auto my-2 my-lg-0"
@@ -31,8 +55,9 @@ const BarraNavegacion = () => {
             placeholder="Buscar"
             className="me-2"
             aria-label="Search"
+            onChange={(e) => setSearchConcept(e.target.value)}
           />
-            <Button variant="outline-success">Buscar</Button>
+          <Button variant="outline-success" onClick={handlerClick}>Buscar</Button>
         </Form>
       </Container>
     </Navbar>

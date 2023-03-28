@@ -21,13 +21,16 @@ import BarraNavegacion from './components/Navbar';
 
 function App() {
 
-  const [ changeState, setChangeState ] = useState(true);
-  const [ products, setProducts ] = useState([]);
-  const [ users, setUsers ] = useState([]);
-  const [ priceFilter, setPriceFilter ] = useState([]);
-  const [ minPrice, setMinPrice ] = useState (0);
-  const [ maxPrice, setMaxPrice ] = useState (0);
-  const [ exito, setExito ] = useState(false);
+  const [ changeState, setChangeState ]           = useState(true);
+  const [ products, setProducts ]                 = useState([]);
+  const [ users, setUsers ]                       = useState([]);
+  const [ priceFilter, setPriceFilter ]           = useState([]);
+  const [ minPrice, setMinPrice ]                 = useState (0);
+  const [ maxPrice, setMaxPrice ]                 = useState (0);
+  const [ exitoRegistro, setExitoRegistro ]       = useState(false);
+  const [ exitoLogin, setExitoLogin ]             = useState(false);
+  const [ searchConcept, setSearchConcept ]       = useState("");
+  const [ handlerSearching, setHandlerSearching]  = useState([]);
   
   const globalState = { changeState, setChangeState,
                         products, setProducts,
@@ -35,7 +38,11 @@ function App() {
                         priceFilter, setPriceFilter,
                         minPrice, setMinPrice,
                         maxPrice, setMaxPrice,
-                        exito, setExito };
+                        exitoRegistro, setExitoRegistro,
+                        exitoLogin, setExitoLogin,
+                        searchConcept, setSearchConcept,
+                        handlerSearching, setHandlerSearching
+                      };
 
   //Consumo de Json
   const endpoint = "/examplesProductos.json";

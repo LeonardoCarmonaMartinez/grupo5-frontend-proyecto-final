@@ -9,46 +9,63 @@ import Cards from '../components/Cards';
 
 
 const Galeria = () => {
-  const { products,  priceFilter, changeState} = useContext(MyContext);
-  console.log(changeState)
-  
-  if(changeState === true) {
+  const { products,  priceFilter, changeState, searchConcept, handlerSearching} = useContext(MyContext);
+
+  if( changeState === true ) {
     return (    
       <div>
          <aside>
-            <p>Ingresar un precio mínimo y uno máximo</p>
             < Sidebar />
           </aside>    
         {products.map(product =>
-         <main>          
-            < Cards 
-              key = {product.id}
-              img = {product.img} 
-              name = {product.name}
-              category = {product.category} 
-              price = {product.price} />
+        <main>       
+          < Cards
+            key = {product.id_producto}          
+            img = {product.img} 
+            name = {product.name}
+            price = {product.price}
+          />
           </main>
         )}
       </div>
     )
   }
-  else {
+  if( changeState === false && searchConcept !== "" && handlerSearching !== [] ) {
+    return (    
+      <div>
+         <aside>
+            < Sidebar />
+          </aside>    
+        {handlerSearching.map(produ =>
+        <main>       
+          < Cards
+            key = {produ.id_producto}                         
+            img = {produ.img} 
+            name = {produ.name} 
+            price = {produ.price}
+          />
+        </main>
+        )}
+      </div>
+    )
+  } 
+  if( changeState === false ) {
     return (
       <div>
         <aside>
           < Sidebar />
         </aside>    
         {priceFilter.map(p =>
-          <main>
-            < Cards 
-              key = {p.id}
-              img = {p.img} 
-              name = {p.name}
-              category = {p.category} 
-              price = {p.price} />
-          </main>
+        <main >
+          < Cards
+            key = {p.id_producto}                        
+            img = {p.img} 
+            name = {p.name} 
+            price = {p.price}
+          />
+        </main>
         )}
-      </div>        
+      </div>       
     )
   }
 };

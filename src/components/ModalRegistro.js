@@ -8,12 +8,12 @@ import Modal from 'react-bootstrap/Modal';
 
 
 function RegistroExitosoModal() {
-  const { exito} = useContext(MyContext);
+  const { exitoRegistro } = useContext(MyContext);
 
   return (
     <Modal
       className="modalShow"
-      show={exito}
+      show={ exitoRegistro }
     >
       <Modal.Header>
         <Modal.Title>Registro Exitoso</Modal.Title>

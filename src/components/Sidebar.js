@@ -4,40 +4,28 @@ import MyContext from "../MyContext";
 
 
 const Sidebar = () => {
-  const { setChangeState, products, setPriceFilter, minPrice, setMinPrice, maxPrice, setMaxPrice } = useContext(MyContext);
-
-  
-  const TrueEstado = () => {
-    const valorTrue = true;
-    setChangeState(valorTrue)
-  };
-  
+  const { setChangeState, products, setPriceFilter, minPrice, setMinPrice, maxPrice, setMaxPrice } = useContext(MyContext)
 
   const FalseEstado = () => {
     const valorFalse = false;
     setChangeState(valorFalse)
-  };
+  };    
   
-  
-
   const handleSearch = () => {
     const cardsGalery = products.filter(
-    product => product.price >= minPrice && product.price <= maxPrice
-  );
-  setPriceFilter(cardsGalery)
-
-  if( minPrice === 0 || maxPrice === 0) {
-    TrueEstado()
-  }
-  if( minPrice !== 0 && maxPrice === 0) {
-    FalseEstado()
-  }
-  if( minPrice === 0 && maxPrice !== 0) {
-    FalseEstado()
-  }
-  if( minPrice !== 0 && maxPrice !== 0) {
-    FalseEstado()
-  }
+      product => product.price >= minPrice && product.price <= maxPrice
+    );
+    setPriceFilter(cardsGalery)
+ 
+    if( (minPrice === 0 && maxPrice === 0) ) {
+      alert("Ingresa un rango de precios válido")
+    }
+    if( minPrice === 0 && maxPrice !== 0 ) {
+      FalseEstado()
+    }
+    if( minPrice !== 0 && maxPrice !== 0 ) {
+      FalseEstado()
+    }
   };
 
   return (
